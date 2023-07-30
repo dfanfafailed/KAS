@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Kas</title>
+  <title>daftar kas</title>
 </head>
 <body>
-  <h1>Form Kas</h1>
+  <h1>Daftar Kas</h1>
   @foreach ($kas as $item)
-      <div>
-        <h5>{{ $item->tanggal }}</h5>
-        <p>id kas : {{ $item->id }}</p>
-      </div>
+      <p>{{$item->tanggal}}</p>
+      <p>{{$item->bulan}}</p>
+      <p>{{$item->uang}}</p>
+      <a href="/kas/{{$item->id}}">detail</a>
   @endforeach
 </body>
 </html>

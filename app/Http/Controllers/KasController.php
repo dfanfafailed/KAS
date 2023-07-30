@@ -12,6 +12,12 @@ class KasController extends Controller
 {
     public function index()
     {
+        $kas = Kas::all();
+        return view('kas.index', compact('kas'));
+    }
+
+    public function add()
+    {
         $tanggal = Carbon::now()->format('Y-m-d');
         $bulan = Carbon::now()->format('F');
         return view('kas.add', compact(['tanggal', 'bulan']));
