@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Kas extends Model
 {
     use HasFactory;
+
     protected $table = 'kas';
+
     protected $guarded = ['id'];
 }
