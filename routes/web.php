@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::get('/kas', [KasController::class, 'index']);
 Route::get('/kas/add', [KasController::class, 'add']);
 Route::post('/kas', [KasController::class, 'create']);
+Route::put('/kas/{id}', [KasController::class, 'update']);
 Route::get('/kas/{id}', [KasController::class, 'view']);
 
 

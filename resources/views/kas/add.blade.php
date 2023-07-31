@@ -11,6 +11,7 @@
   <form action="/kas" method="POST">
     @csrf
     <p>tanggal</p>
+
     <input type="text" name="tanggal" value="{{$tanggal}}">
 
     <p>bulan</p>

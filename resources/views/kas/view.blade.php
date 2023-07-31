@@ -10,17 +10,29 @@
   <h1>Rincian kas</h1>
   <table>
     <tr>
+      <th>id dana</th>
       <th>id kas</th>
       <th>nis</th>
+      <th>nama</th>
+      <th>kas</th>
       <th>kas masuk</th>
       <th>status</th>
+      <th>edit</th>
     </tr>
     @foreach ($dana as $item)
       <tr>
+        <td>{{$item->id}}</td>
         <td>{{$item->id_kas}}</td>
         <td>{{$item->id_siswa}}</td>
-        <td>{{$item->dana_masuk}}</td>
+        <td>{{$item->name}}</td>
+      <form action="/kas/{{$item->id}}" method="POST">
+        @csrf
+        @method('PUT')
+        <td>{{$item->uang}}</td>
+        <td><input type="number" value="{{$item->dana_masuk}}" name="kas_masuk"></td>
         <td>{{$item->status}}</td>
+        <td><button type="submit">edit</button></td>
+      </form>
       </tr>
     @endforeach
   </table>
