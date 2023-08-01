@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DanaController;
+use App\Http\Controllers\KasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function () {
-    return view('index');
-});
+
+
+Route::get('/kas', [KasController::class, 'index']);
+Route::get('/kas/add', [KasController::class, 'add']);
+Route::post('/kas', [KasController::class, 'create']);
+Route::put('/kas/{id}', [KasController::class, 'update']);
+Route::get('/kas/{id}', [KasController::class, 'view']);
+
+
+Route::get('/dana', [DanaController::class, 'index']);
