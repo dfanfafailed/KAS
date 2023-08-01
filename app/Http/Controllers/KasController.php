@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Kas;
 use App\Models\User;
 use App\Models\Dana;
+use App\Models\Kategori;
 // use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 
 class KasController extends Controller
@@ -21,11 +23,13 @@ class KasController extends Controller
     {
         $tanggal = \Carbon\Carbon::now()->format('Y-m-d');
         $bulan = \Carbon\Carbon::now()->format('F');
-        return view('kas.add', compact(['tanggal', 'bulan']));
+        $kategori = Kategori::all();
+        return view('kas.add', compact(['tanggal', 'bulan', 'kategori']));
     }
 
     public function create(Request $request)
     {
+
         Kas::create($request->except('_token'));
         $nis = User::get('id');
         $idKas = Kas::get('id')->last();
@@ -45,10 +49,16 @@ class KasController extends Controller
     public function update(Request $request)
     {
         $dana = Dana::find($request->id);
+        $kas = Kas::find($dana->id_kas);
 
         $dana->dana_masuk = $request->kas_masuk;
-        $dana->status = 1;
+        if ($dana->dana_masuk == $kas->uang) {
+            $dana->status = 1;
+        }
+
         $dana->save();
+
+        return Redirect::route('kas.view', $kas->id);
     }
 
     public function view(Request $request)

@@ -8,10 +8,12 @@
 </head>
 <body>
   <h1>Daftar Kas</h1>
+  <a href="/kas/add">+kas</a>
   @foreach ($kas as $item)
       <p>{{$item->tanggal}}</p>
       <p>{{$item->bulan}}</p>
       <p>{{$item->uang}}</p>
+      <p>kategori : {{$item->kategori->title}}</p>
       <a href="/kas/{{$item->id}}">detail</a>
   @endforeach
 </body>

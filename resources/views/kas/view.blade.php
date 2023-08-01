@@ -29,9 +29,15 @@
         @csrf
         @method('PUT')
         <td>{{$item->uang}}</td>
-        <td><input type="number" value="{{$item->dana_masuk}}" name="kas_masuk"></td>
-        <td>{{$item->status}}</td>
-        <td><button type="submit">edit</button></td>
+        @if ($item->dana_masuk == $item->uang)
+          <td>{{$item->dana_masuk}}</td>
+          <td><p>Lunas</p></td>
+        @else
+          <td><input type="number" value="{{$item->dana_masuk}}" name="kas_masuk"></td> 
+          <td><p>belum bayar</p></td>
+          <td><button type="submit">edit</button></td>
+        @endif
+       
       </form>
       </tr>
     @endforeach

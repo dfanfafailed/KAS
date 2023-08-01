@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('kas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_kategori');
             $table->date('tanggal');
             $table->string('bulan');
             $table->integer('uang');
             $table->timestamps();
+
+            $table->foreign('id_kategori')->references('id')->on('kategori');
         });
     }
 
