@@ -14,7 +14,9 @@ class KasController extends Controller
     public function index()
     {
         $kas = Kas::all();
-        return view('kas.index', compact('kas'));
+        $tanggal = \Carbon\Carbon::now()->format('Y-m-d');
+        $bulan = \Carbon\Carbon::now()->format('F');
+        return view('kas.index', compact(['kas','tanggal','bulan']));
     }
 
     public function add()
