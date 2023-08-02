@@ -5,6 +5,7 @@ use App\Http\Controllers\DanaController;
 use App\Http\Controllers\KasController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PengeluaranController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,12 @@ Route::middleware(['auth', 'has.role:1,2'])->group(function () {
 });
 
 Route::middleware(['auth', 'has.role:2'])->group(function () {
+    Route::get('/user', [UserController::class, 'index']);
+    Route::get('/user/add', [UserController::class, 'add']);
+    Route::post('/user', [UserController::class, 'store']);
+    Route::get('/user/{id}', [UserController::class, 'edit']);
+    Route::put('/user/{id}', [UserController::class, 'update']);
+
     Route::get('/kas', [KasController::class, 'index']);
     Route::get('/kas/add', [KasController::class, 'add']);
     Route::post('/kas', [KasController::class, 'create']);
