@@ -23,9 +23,10 @@
     <div class="relative z-0 w-full mb-6 group ">
       <label for="countries" class="block mb-2 text-sm text-gray-900 dark:text-white">Nama Siswa</label>
         <select id="siswa" name="id_siswa" class="border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-          @foreach ($siswa as $item)
+              <option value="" selected>none</option>
+          {{-- @foreach ($siswa as $item)
               <option value="{{ $item->id }}">{{ $item->name }}</option>
-          @endforeach
+          @endforeach --}}
         </select>
     </div>
   </div>

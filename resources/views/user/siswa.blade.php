@@ -3,9 +3,11 @@
  
   <div class="bg-gray-800 pt-3">
     <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
-        <h3 class="font-bold pl-2">Daftar Kas</h3>
+        <h3 class="font-bold pl-2">Daftar Siswa</h3>
     </div>
   </div>
+
+  
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-3 my-5">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

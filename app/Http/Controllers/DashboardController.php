@@ -16,6 +16,7 @@ class DashboardController extends Controller
     private $infaq = 0;
 
     public function index(DanaController $kas) {
+    
         $this->dana = $kas->index()->dana;
         $dana = $this->dana;
         
@@ -27,6 +28,7 @@ class DashboardController extends Controller
 
         $this->infaq = $kas->index()->infaq;
         $infaq = $this->infaq;
+        
 
         $siswa = User::count('id');
 

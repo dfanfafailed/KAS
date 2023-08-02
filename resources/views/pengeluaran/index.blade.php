@@ -44,6 +44,7 @@
             <div class="relative z-0 w-full mb-6 group ">
               <label for="countries" class="block mb-2 text-sm text-gray-900 dark:text-white">Nama Siswa</label>
                 <select id="siswa" name="id_siswa" class="border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                  <option value="" selected>--none--</option>
                   @foreach ($siswa as $item)
                       <option value="{{ $item->id }}">{{ $item->name }}</option>
                   @endforeach
@@ -64,7 +65,7 @@
   </div>
 </div>
 
-  @foreach ($pengeluaran as $item)
+  @foreach ($bayar as $item)
   <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-10 my-5">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">tanggal : </label>
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{$item->tanggal}}</p>
@@ -73,14 +74,20 @@
       @if ($item->id_siswa != NULL)
       
           <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">nama :</label>
-          <p>{{$item->user->name}}</p>
-          <div class="my-5">
+          <p>{{$item->name}}</p>
+          
+        @if ($item->uang_masuk < $item->uang)
+        <div class="my-5">
           <a href="/pembayaran/{{$item->id}}" class="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 my-10">bayar</a>
         </div>
+        @endif  
+        
       @endif
       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">kas keluar : </label>
       <p>{{$item->uang}}</p>
-  
+        
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">dibayar : </label>
+      <p>{{$item->uang_masuk}}</p>
     </a>
   </div>
   @endforeach

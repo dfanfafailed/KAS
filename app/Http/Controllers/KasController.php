@@ -75,9 +75,5 @@ class KasController extends Controller
 
         return view('kas.view', compact('dana'));
     }
-    function siswa() {
-        $siswa = User::all();
-
-        return view('user.siswa', compact('siswa'));
-    }
+    
 }

@@ -27,7 +27,7 @@ class DanaController extends Controller
             ->where('kas.id_kategori', '=', 2)
             ->sum('dana.dana_masuk');
 
-        $bayar = Pembayaran::sum('uang');
+        $bayar = Pembayaran::sum('uang_masuk');
 
         $danaMasuk = Dana::sum('dana_masuk');
         $danaKeluar = Pengeluaran::sum('uang');
@@ -35,19 +35,24 @@ class DanaController extends Controller
         $this->danaTersedia += $bayar;
         $danaTersedia = $this->danaTersedia;
 
-        return view('dana.add', compact(['danaKeluar', 'danaTersedia', 'dana', 'infaq']));
+        return view('dana.update', compact(['danaKeluar', 'danaTersedia', 'dana', 'infaq']));
     }
 
-    public function add(int $id)
+    public function edit(int $id)
     {
         $tanggal = Carbon::now()->format('Y-m-d');
         $pengeluaran = Pengeluaran::find($id);
         $nama = $pengeluaran->user->name;
-        return view('dana.add', compact(['nama', 'tanggal', 'pengeluaran']));
+        return view('dana.update', compact(['nama', 'tanggal', 'pengeluaran']));
     }
 
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        $bayar = Pembayaran::create($request->except('_token'));
+        $bayar = Pembayaran::where('id_pengeluaran','=',$request->id_pengeluaran)->first();
+        
+        $bayar->update([
+            'uang' => $request->uang,
+        ]);
+        $bayar->save();
     }
 }
