@@ -13,21 +13,12 @@ class PengeluaranController extends Controller
 {
     public function index()
     {
-        $pengeluaran = DB::table('pengeluaran')->where('id_siswa','=',0)->get();
-        dd($pengeluaran);
-        
-        
-        $bayar = DB::table('pengeluaran')
-                    ->rightJoin('pembayaran','pembayaran.id_pengeluaran','=','pengeluaran.id')
-                    ->join('users','pembayaran.id_siswa','=','users.id')
-                    ->select('pembayaran.uang_masuk','pengeluaran.*','users.name')
-                    ->get();
-       
-      
-       
-        $siswa = User::all();
-        $tanggal = Carbon::now()->format('Y-m-d');
-        return view('pengeluaran.index', compact('tanggal','siswa','bayar'));
+        $pengeluaran = DB::table('pengeluaran')
+        ->leftJoin('pembayaran', 'pengeluaran.id', '=', 'pembayaran.id_pengeluaran')
+        ->leftJoin('users', 'pembayaran.id_siswa', '=', 'users.id')
+        ->select('pengeluaran.*', 'pembayaran.uang_kembali', 'users.name')
+        ->get();
+        return view('pengeluaran.index', compact('pengeluaran'));
     }
 
     public function add()
@@ -46,10 +37,9 @@ class PengeluaranController extends Controller
                 'id_pengeluaran' => $pengeluaran->id,
                 'id_siswa' => $pengeluaran->id_siswa,
                 'tanggal' => $pengeluaran->tanggal,
-                'uang' => 0
+                'uang' => 0,
             ]);
         }
-        
         return 'OK';
     }
 }
