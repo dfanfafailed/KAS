@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index']);
 
+Route::get('/siswa', [KasController::class, 'siswa'])->name('siswa');
 
 Route::get('/kas', [KasController::class, 'index'])->name('daftar.kas');
 Route::get('/kas/add', [KasController::class, 'add'])->name('kas.add');
@@ -37,5 +38,5 @@ Route::get('/kategori', [KategoriController::class, 'create']);
 Route::post('/kategori', [KategoriController::class, 'store']);
 
 Route::get('/pengeluaran/add', [PengeluaranController::class, 'add']);
-Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
+Route::get('/pengeluaran', [PengeluaranController::class, 'index'])->name('dana.keluar');
 Route::post('/pengeluaran', [PengeluaranController::class, 'store']);

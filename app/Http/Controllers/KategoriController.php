@@ -14,6 +14,7 @@ class KategoriController extends Controller
 
     public function store(Request $request)
     {
+        
         Kategori::create($request->except('_token'));
 
         return 'ok';

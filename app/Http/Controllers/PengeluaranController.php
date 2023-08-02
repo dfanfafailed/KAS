@@ -12,7 +12,9 @@ class PengeluaranController extends Controller
     public function index()
     {
         $pengeluaran = Pengeluaran::all();
-        return view('pengeluaran.index', compact('pengeluaran'));
+        $siswa = User::all();
+        $tanggal = Carbon::now()->format('Y-m-d');
+        return view('pengeluaran.index', compact('pengeluaran','tanggal','siswa'));
     }
 
     public function add()

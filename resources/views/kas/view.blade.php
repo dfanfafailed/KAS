@@ -32,9 +32,6 @@
               <th scope="col" class="px-2 py-3">
                 status
               </th>
-              <th scope="col" class="px-2 py-3">
-                  <span class="sr-only">Edit</span>
-              </th>
           </tr>
       </thead>
       <tbody>
@@ -58,19 +55,29 @@
                 <td class="px-2 py-4">
                   {{$item->uang}}
                 </td>
+                @if ($item->dana_masuk == $item->uang)
+                <td class="px-2 py-4">
+                  {{$item->dana_masuk}}
+                </td>
+                <td class="px-2 py-4">
+                  Lunas
+                </td>
+                @else
                 <td class="px-2 py-4">
                   <input type="number" value="{{$item->dana_masuk}}" name="kas_masuk">
                 </td>
-                <td class="px-2 py-4">
+                  <td class="px-2 py-4">
                   {{$item->status}}
                 </td>
+                @endif
+               
+              
 
               <td class="px-2 py-4 text-right">
-                  <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                  <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
               </td>
           </tr>
+        </form>
           @endforeach
       </tbody>
-  </table>
-</div>
 @endsection

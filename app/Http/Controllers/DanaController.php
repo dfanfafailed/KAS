@@ -35,7 +35,7 @@ class DanaController extends Controller
         $this->danaTersedia += $bayar;
         $danaTersedia = $this->danaTersedia;
 
-        return view('dana.index', compact(['danaKeluar', 'danaTersedia', 'dana', 'infaq']));
+        return view('dana.add', compact(['danaKeluar', 'danaTersedia', 'dana', 'infaq']));
     }
 
     public function add(int $id)

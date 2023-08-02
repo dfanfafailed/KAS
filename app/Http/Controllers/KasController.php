@@ -18,7 +18,8 @@ class KasController extends Controller
         $kas = Kas::all();
         $tanggal = \Carbon\Carbon::now()->format('Y-m-d');
         $bulan = \Carbon\Carbon::now()->format('F');
-        return view('kas.index', compact(['kas','tanggal','bulan']));
+        $kategori = Kategori::all();
+        return view('kas.index', compact(['kas','tanggal','bulan', 'kategori']));
     }
 
     public function add()
@@ -57,7 +58,7 @@ class KasController extends Controller
         if ($dana->dana_masuk == $kas->uang) {
             $dana->status = 1;
         }
-
+            
         $dana->save();
 
         return Redirect::route('kas.view', $kas->id);
@@ -73,5 +74,10 @@ class KasController extends Controller
             ->get();
 
         return view('kas.view', compact('dana'));
+    }
+    function siswa() {
+        $siswa = User::all();
+
+        return view('user.siswa', compact('siswa'));
     }
 }
