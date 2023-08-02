@@ -16,5 +16,9 @@
       <p>kategori : {{$item->kategori->title}}</p>
       <a href="/kas/{{$item->id}}">detail</a>
   @endforeach
+  <form action="/logout" method="POST">
+    @csrf
+    <button type="submit">logout</button>
+  </form>
 </body>
 </html>

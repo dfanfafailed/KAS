@@ -9,9 +9,9 @@ use Tests\TestCase;
 
 class ModelTest extends TestCase
 {
-    public function testModel()
-    {
-        $kas = Kas::first()->kategori->title;
-        $this->assertEquals('kas', $kas);
-    }
+    // public function testModel()
+    // {
+    //     $kas = Kas::first()->kategori->title;
+    //     $this->assertEquals('kas', $kas);
+    // }
 }

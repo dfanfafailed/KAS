@@ -16,9 +16,15 @@ class ControllerTest extends TestCase
             ->assertSeeText('1');
     }
 
-    // public function kasControllerTest()
-    // {
-    //     $this->post('/kas', ['kategori' => '1'])
-    //         ->assertSeeText('2');
-    // }
+    public function testLogin()
+    {
+        $this->post('/login', ['id' => 1, 'password' => 'password'])
+            ->assertSeeText('!login');
+    }
+
+    public function testLoginNotValid()
+    {
+        $this->post('/login', ['id' => 1, 'password' => 'password?'])
+            ->assertSeeText('!login');
+    }
 }
