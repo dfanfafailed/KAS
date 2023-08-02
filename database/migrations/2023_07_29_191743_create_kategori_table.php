@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kas', function (Blueprint $table) {
+        Schema::create('kategori', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_kategori');
-            $table->date('tanggal');
-            $table->string('bulan');
-            $table->integer('uang');
+            $table->string('title');
             $table->timestamps();
-
-            $table->foreign('id_kategori')->references('id')->on('kategori');
         });
     }
 
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kas');
+        Schema::dropIfExists('kategori');
     }
 };

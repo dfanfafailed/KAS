@@ -350,8 +350,8 @@ class ComposerStaticInitd1a9d70193d06ee737e7aa47404ff479
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -453,8 +453,8 @@ class ComposerStaticInitd1a9d70193d06ee737e7aa47404ff479
         ),
         'Fruitcake\\Cors\\' => 
         array (
-            0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
-            1 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
+            0 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
+            1 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
         'Faker\\' => 
         array (
@@ -524,6 +524,8 @@ class ComposerStaticInitd1a9d70193d06ee737e7aa47404ff479
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DanaController' => __DIR__ . '/../..' . '/app/Http/Controllers/DanaController.php',
         'App\\Http\\Controllers\\KasController' => __DIR__ . '/../..' . '/app/Http/Controllers/KasController.php',
+        'App\\Http\\Controllers\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/KategoriController.php',
+        'App\\Http\\Controllers\\PengeluaranController' => __DIR__ . '/../..' . '/app/Http/Controllers/PengeluaranController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -535,6 +537,8 @@ class ComposerStaticInitd1a9d70193d06ee737e7aa47404ff479
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Dana' => __DIR__ . '/../..' . '/app/Models/Dana.php',
         'App\\Models\\Kas' => __DIR__ . '/../..' . '/app/Models/Kas.php',
+        'App\\Models\\Kategori' => __DIR__ . '/../..' . '/app/Models/Kategori.php',
+        'App\\Models\\Pengeluaran' => __DIR__ . '/../..' . '/app/Models/Pengeluaran.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -5781,7 +5785,9 @@ class ComposerStaticInitd1a9d70193d06ee737e7aa47404ff479
         'Termwind\\ValueObjects\\Style' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Style.php',
         'Termwind\\ValueObjects\\Styles' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Styles.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
+        'Tests\\Feature\\ControllerTest' => __DIR__ . '/../..' . '/tests/Feature/ControllerTest.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
+        'Tests\\Feature\\ModelTest' => __DIR__ . '/../..' . '/tests/Feature/ModelTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Tests\\Unit\\ExampleTest' => __DIR__ . '/../..' . '/tests/Unit/ExampleTest.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',

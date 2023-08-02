@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('password');
+            $table->tinyInteger('keanggotaan')->default(0);
             $table->timestamps();
         });
     }
