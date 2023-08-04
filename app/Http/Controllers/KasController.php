@@ -46,7 +46,7 @@ class KasController extends Controller
             ]);
         }
 
-        return 'succes!';
+        return redirect('/kas');
     }
 
     public function update(Request $request)

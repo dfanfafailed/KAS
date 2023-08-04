@@ -27,7 +27,7 @@ class DanaController extends Controller
             ->where('kas.id_kategori', '=', 2)
             ->sum('dana.dana_masuk');
 
-        $bayar = Pembayaran::sum('uang_masuk');
+        $bayar = Pembayaran::sum('uang_kembali');
 
         $danaMasuk = Dana::sum('dana_masuk');
         $danaKeluar = Pengeluaran::sum('uang');
@@ -51,8 +51,10 @@ class DanaController extends Controller
         $bayar = Pembayaran::where('id_pengeluaran','=',$request->id_pengeluaran)->first();
         
         $bayar->update([
-            'uang' => $request->uang,
+            'uang_kembali' => $request->uang_kembali,
         ]);
         $bayar->save();
+
+        return redirect('/pengeluaran')->with('success', 'Konfirmasi Berhasil');
     }
 }

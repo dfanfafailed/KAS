@@ -13,6 +13,29 @@
   Tambah Kas
 </button>
 
+<div class="flex flex-wrap">
+  @foreach ($kas as $item)
+  <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+      <!--Metric Card-->
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mx-2 my-0 ">
+      
+        <h1 class="mb-5 font-semibold text-xl">Datar {{$item->kategori->title}}</h1>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{$item->tanggal}}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{$item->bulan}}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Rp.{{$item->uang}}</p>
+       
+        <a href="{{ route('kas.view',$item->id) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Detail
+            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </a>
+      </div>
+      <!--End Metric Card-->
+  </div>
+  @endforeach
+</div>
+
 <!-- Main modal -->
 <div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-2xl max-h-full">
@@ -66,22 +89,4 @@
     </div>
 </div>
 </form>
-
-  @foreach ($kas as $item)
-        
-    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-10 my-5 ">
-      
-      <h1 class="mb-5 font-semibold text-xl">Datar {{$item->kategori->title}}</h1>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{$item->tanggal}}</p>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{$item->bulan}}</p>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Rp.{{$item->uang}}</p>
-     
-      <a href="{{ route('kas.view',$item->id) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Detail
-          <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-          </svg>
-      </a>
-    </div>
-    @endforeach
 @endsection

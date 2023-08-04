@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Dana;
-use App\Models\Kas;
+use App\Models\Pembayaran;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,9 +28,9 @@ class DashboardController extends Controller
         $this->infaq = $kas->index()->infaq;
         $infaq = $this->infaq;
         
-
+        $danaKeluar =$danaKeluar - Pembayaran::sum('uang_kembali') ;
+    
         $siswa = User::count('id');
-
         return view('content.dashboard', compact(['dana', 'siswa','danaKeluar','danaTersedia', 'infaq']));
         
     }

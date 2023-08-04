@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth', 'has.role:2'])->group(function () {
-    Route::get('/',[DashboardController::class,'index']);
+    Route::get('/',[DashboardController::class,'index'])->name('home');
 
     Route::get('/user', [UserController::class, 'index'])->name('siswa');
     Route::get('/user/add', [UserController::class, 'add']);
@@ -60,4 +60,4 @@ Route::middleware(['auth', 'has.role:2'])->group(function () {
 
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
