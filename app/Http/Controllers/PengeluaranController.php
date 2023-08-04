@@ -40,7 +40,7 @@ class PengeluaranController extends Controller
                 'id_pengeluaran' => $pengeluaran->id,
                 'id_siswa' => $pengeluaran->id_siswa,
                 'tanggal' => $pengeluaran->tanggal,
-                'uang' => 0,
+                'uang_kembali' => 0,
             ]);
         }
         return 'OK';

@@ -42,7 +42,7 @@ Route::middleware(['auth', 'has.role:2'])->group(function () {
 
     Route::get('/dana', [DanaController::class, 'index'])->name('home');
     Route::get('/pembayaran/{id}', [DanaController::class, 'add']);
-    Route::post('/pembayaran', [DanaController::class, 'store']);
+    Route::post('/pembayaran', [DanaController::class, 'update']);
 
 
     Route::get('/kategori', [KategoriController::class, 'create']);

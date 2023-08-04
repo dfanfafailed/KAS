@@ -26,7 +26,7 @@
 
     <label for="uang">
       <p>bayar</p>
-      <input type="number" name="uang" id="uang">
+      <input type="number" name="uang_kembali" id="uang">
     </label>
     <button type="submit">send</button>
   </form>

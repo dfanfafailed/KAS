@@ -18,6 +18,7 @@
       <label for="siswa">
         <p>nama siswa</p>
         <select name="id_siswa" id="siswa">
+          <option value="">-none-</option>
           @foreach ($siswa as $item)
            <option value="{{$item->id}}">{{$item->name}}</option>
           @endforeach
