@@ -26,7 +26,10 @@ class AuthController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->intended('login');
+        // return redirect()->intended('login');
+        return back()->withErrors([
+            'id' => 'Maaf, Password salah',
+        ]);
     }
 
     public function logout(Request $request)
