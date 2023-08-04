@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_siswa')->nullable();
             $table->date('tanggal');
             $table->string('excerpt');
-            $table->integer('uang');
+            $table->integer('uang_kembali');
             $table->timestamps();
 
             $table->foreign('id_siswa')->references('id')->on('users');

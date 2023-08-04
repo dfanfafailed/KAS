@@ -16,7 +16,10 @@ class KasController extends Controller
     public function index()
     {
         $kas = Kas::all();
-        return view('kas.index', compact('kas'));
+        $tanggal = \Carbon\Carbon::now()->format('Y-m-d');
+        $bulan = \Carbon\Carbon::now()->format('F');
+        $kategori = Kategori::all();
+        return view('kas.index', compact(['kas','tanggal','bulan', 'kategori']));
     }
 
     public function add()
@@ -43,7 +46,7 @@ class KasController extends Controller
             ]);
         }
 
-        return 'succes!';
+        return redirect('/kas');
     }
 
     public function update(Request $request)
@@ -55,7 +58,7 @@ class KasController extends Controller
         if ($dana->dana_masuk == $kas->uang) {
             $dana->status = 1;
         }
-
+            
         $dana->save();
 
         return Redirect::route('kas.view', $kas->id);
@@ -72,4 +75,5 @@ class KasController extends Controller
 
         return view('kas.view', compact('dana'));
     }
+    
 }

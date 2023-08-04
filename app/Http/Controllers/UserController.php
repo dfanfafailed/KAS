@@ -11,12 +11,12 @@ class UserController extends Controller
     public function index()
     {
         $siswa = User::all();
-        return view('user.index', compact('siswa'));
+        return view('user.siswa ', compact('siswa'));
     }
 
     public function add()
     {
-        return view('user.add');
+        return view('user.siswa');
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class UserController extends Controller
     {
         $siswa = User::find($id);
 
-        return view('user.edit', compact('siswa'));
+        return view('user.siswa', compact('siswa'));
     }
 
     public function update(Request $request, int $id)

@@ -35,25 +35,26 @@ class DanaController extends Controller
         $this->danaTersedia += $bayar;
         $danaTersedia = $this->danaTersedia;
 
-        return view('dana.index', compact(['danaKeluar', 'danaTersedia', 'dana', 'infaq']));
+        return view('dana.update', compact(['danaKeluar', 'danaTersedia', 'dana', 'infaq']));
     }
 
-    public function add(int $id)
+    public function edit(int $id)
     {
         $tanggal = Carbon::now()->format('Y-m-d');
         $pengeluaran = Pengeluaran::find($id);
         $nama = $pengeluaran->user->name;
-        return view('dana.add', compact(['nama', 'tanggal', 'pengeluaran']));
+        return view('dana.update', compact(['nama', 'tanggal', 'pengeluaran']));
     }
 
     public function update(Request $request)
     {
-
         $bayar = Pembayaran::where('id_pengeluaran', '=', $request->id_pengeluaran);
 
         $bayar->update([
             'tanggal' => $request->tanggal,
             'uang_kembali' => $request->uang_kembali,
         ]);
+
+        return redirect('/pengeluaran')->with('success', 'Konfirmasi Berhasil');
     }
 }
