@@ -10,6 +10,7 @@
   
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-3 my-5">
+    <a href="/user/add">+siswa</a>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -20,8 +21,11 @@
                     nama
                 </th>
                 <th scope="col" class="px-2 py-3">
-                    anggota
+                    peran
                 </th>
+                <th scope="col" class="px-2 py-3">
+                  edit
+              </th>
             </tr>
         </thead>
         <tbody>
@@ -34,8 +38,13 @@
                   {{$item->name}}
                 </td>
                 <td class="px-2 py-4">
-                  {{$item->keanggotaan}}
+                  @if ($item->keanggotaan == 2)
+                      <p>Bendahara</p>
+                  @else
+                      <p>Siswa</p>
+                  @endif
                 </td>
+                <td class="px-2 py-4"><a href="/user/{{$item->id}}">edit</a></td>
                 @endforeach
             </tr>
         </tbody>

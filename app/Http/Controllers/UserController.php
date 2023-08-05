@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function add()
     {
-        return view('user.siswa');
+        return view('user.add');
     }
 
     public function store(Request $request)
@@ -24,7 +24,7 @@ class UserController extends Controller
         User::create([
             'name' => $request->name,
             'password' => Hash::make($request->password),
-            'keanggotaan' => 1
+            'keanggotaan' => $request->keanggotaan
         ]);
 
         return 'added';
@@ -34,7 +34,7 @@ class UserController extends Controller
     {
         $siswa = User::find($id);
 
-        return view('user.siswa', compact('siswa'));
+        return view('user.edit', compact('siswa'));
     }
 
     public function update(Request $request, int $id)

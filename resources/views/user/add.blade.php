@@ -14,7 +14,13 @@
       <p>nama</p>
       <input type="text" name="name" id="name">
     </label>
-
+    <label for="peran">
+      <p>peran</p>
+      <select name="keanggotaan" id="peran">
+        <option value="1" selected>siswa</option>
+        <option value="2">bendahara</option>
+      </select>
+    </label>
     <label for="password">
       <p>password</p>
       <input type="password" name="password" id="password">

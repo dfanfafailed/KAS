@@ -18,13 +18,16 @@
 
     <label for="password">
       <p>keanggotaan</p>
-      <input type="text" name="keanggotaan" id="password" value="{{$siswa->keanggotaan}}">
+      <select name="keanggotaan" id="peran">
+        <option value="1" {{$siswa->keanggotaan == 1 ? 'selected' : ''}}>siswa</option>
+        <option value="2" {{$siswa->keanggotaan == 2 ? 'selected' : ''}}>bendahara</option>
+      </select>
     </label>
 
-    <label for="password">
+    {{-- <label for="password">
       <p>password</p>
       <input type="password" name="password" id="password" value="{{$siswa->password}}">
-    </label>
+    </label> --}}
 
     <button type="submit">simpan</button>
   </form>

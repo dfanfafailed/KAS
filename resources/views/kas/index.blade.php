@@ -13,6 +13,16 @@
   Tambah Kas
 </button>
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="flex flex-wrap">
   @foreach ($kas as $item)
   <div class="w-full md:w-1/2 xl:w-1/3 p-6">
@@ -22,7 +32,12 @@
         <h1 class="mb-5 font-semibold text-xl">Datar {{$item->kategori->title}}</h1>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{$item->tanggal}}</p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{$item->bulan}}</p>
+        @if ($item->uang == 0)
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">seikhlasnya</p>
+        @else
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Rp.{{$item->uang}}</p>
+        @endif
+        
        
         <a href="{{ route('kas.view',$item->id) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Detail

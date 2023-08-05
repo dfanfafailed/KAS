@@ -14,11 +14,12 @@ class DashboardController extends Controller
     private $danaTersedia = 0;
     private $infaq = 0;
 
-    public function index(DanaController $kas) {
-    
+    public function index(DanaController $kas)
+    {
+
         $this->dana = $kas->index()->dana;
         $dana = $this->dana;
-        
+
         $this->danaKeluar = $kas->index()->danaKeluar;
         $danaKeluar = $this->danaKeluar;
 
@@ -27,11 +28,10 @@ class DashboardController extends Controller
 
         $this->infaq = $kas->index()->infaq;
         $infaq = $this->infaq;
-        
-        $danaKeluar =$danaKeluar - Pembayaran::sum('uang_kembali') ;
-    
+
+
+
         $siswa = User::count('id');
-        return view('content.dashboard', compact(['dana', 'siswa','danaKeluar','danaTersedia', 'infaq']));
-        
+        return view('content.dashboard', compact(['dana', 'siswa', 'danaKeluar', 'danaTersedia', 'infaq']));
     }
 }

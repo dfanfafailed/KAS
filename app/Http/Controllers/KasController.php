@@ -19,7 +19,7 @@ class KasController extends Controller
         $tanggal = \Carbon\Carbon::now()->format('Y-m-d');
         $bulan = \Carbon\Carbon::now()->format('F');
         $kategori = Kategori::all();
-        return view('kas.index', compact(['kas','tanggal','bulan', 'kategori']));
+        return view('kas.index', compact(['kas', 'tanggal', 'bulan', 'kategori']));
     }
 
     public function add()
@@ -32,6 +32,30 @@ class KasController extends Controller
 
     public function create(Request $request)
     {
+
+        if ($request->id_kategori != 1) {
+            Kas::create([
+                'id_kategori' => $request->id_kategori,
+                'tanggal' => $request->tanggal,
+                'bulan' => $request->bulan,
+                'uang' => 0
+            ]);
+            $nis = User::get('id');
+            $idKas = Kas::get('id')->last();
+
+            foreach ($nis as $item) {
+                Dana::create([
+                    'id_kas' => $idKas->id,
+                    'id_siswa' => $item->id,
+                    'dana_masuk' => 0,
+                    'status' => 0,
+                ]);
+            }
+        }
+
+        $request->validate([
+            'uang' => 'integer|min_digits:3'
+        ]);
 
         Kas::create($request->except('_token'));
         $nis = User::get('id');
@@ -58,7 +82,7 @@ class KasController extends Controller
         if ($dana->dana_masuk == $kas->uang) {
             $dana->status = 1;
         }
-            
+
         $dana->save();
 
         return Redirect::route('kas.view', $kas->id);
@@ -66,14 +90,14 @@ class KasController extends Controller
 
     public function view(Request $request)
     {
+        $kas = Kas::find($request->id);
         $dana = DB::table('dana')
             ->join('users', 'users.id', '=', 'dana.id_siswa')
             ->join('kas', 'kas.id', '=', 'dana.id_kas')
             ->where('id_kas', $request->id)
-            ->select('users.name', 'dana.*', 'kas.uang')
+            ->select('users.name', 'dana.*', 'kas.uang', 'kas.id_kategori')
             ->get();
 
-        return view('kas.view', compact('dana'));
+        return view('kas.view', compact('dana', 'kas'));
     }
-    
 }
