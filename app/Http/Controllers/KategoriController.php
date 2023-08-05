@@ -17,6 +17,6 @@ class KategoriController extends Controller
         
         Kategori::create($request->except('_token'));
 
-        return 'ok';
+        return redirect('/kategori');
     }
 }

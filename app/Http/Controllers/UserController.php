@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Nette\Utils\Json;
 
 class UserController extends Controller
 {
@@ -27,20 +28,21 @@ class UserController extends Controller
             'keanggotaan' => 1
         ]);
 
-        return 'added';
+        return redirect('/user');
     }
 
     public function edit(int $id)
     {
         $siswa = User::find($id);
 
-        return view('user.siswa', compact('siswa'));
+        return view('user.edit', compact('siswa'));
     }
 
     public function update(Request $request, int $id)
     {
         $user = User::find($id);
         $user->update($request->except('_token'));
-        $user->save();
+
+        return redirect('/user')->with('alert', 'Behasil di edit');
     }
 }
