@@ -11,7 +11,8 @@ class UserController extends Controller
     public function index()
     {
         $siswa = User::all();
-        return view('user.siswa ', compact('siswa'));
+        $title = 'Siswa';
+        return view('user.siswa ', compact(['siswa', 'title']));
     }
 
     public function add()

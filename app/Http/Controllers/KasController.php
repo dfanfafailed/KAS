@@ -13,13 +13,16 @@ use Illuminate\Support\Facades\DB;
 
 class KasController extends Controller
 {
+    private $title = 'Kas';
+
     public function index()
     {
         $kas = Kas::all();
         $tanggal = \Carbon\Carbon::now()->format('Y-m-d');
         $bulan = \Carbon\Carbon::now()->format('F');
         $kategori = Kategori::all();
-        return view('kas.index', compact(['kas', 'tanggal', 'bulan', 'kategori']));
+        $title = $this->title;
+        return view('kas.index', compact(['kas', 'tanggal', 'bulan', 'kategori', 'title']));
     }
 
     public function add()
@@ -27,7 +30,8 @@ class KasController extends Controller
         $tanggal = \Carbon\Carbon::now()->format('Y-m-d');
         $bulan = \Carbon\Carbon::now()->format('F');
         $kategori = Kategori::all();
-        return view('kas.add', compact(['tanggal', 'bulan', 'kategori']));
+        $title = $this->title;
+        return view('kas.add', compact(['tanggal', 'bulan', 'kategori', 'title']));
     }
 
     public function create(Request $request)
@@ -97,7 +101,7 @@ class KasController extends Controller
             ->where('id_kas', $request->id)
             ->select('users.name', 'dana.*', 'kas.uang', 'kas.id_kategori')
             ->get();
-
-        return view('kas.view', compact('dana', 'kas'));
+        $title = $this->title;
+        return view('kas.view', compact('dana', 'kas', 'title'));
     }
 }

@@ -29,9 +29,9 @@ class DashboardController extends Controller
         $this->infaq = $kas->index()->infaq;
         $infaq = $this->infaq;
 
-
+        $title = 'Dashboard';
 
         $siswa = User::count('id');
-        return view('content.dashboard', compact(['dana', 'siswa', 'danaKeluar', 'danaTersedia', 'infaq']));
+        return view('content.dashboard', compact(['dana', 'siswa', 'danaKeluar', 'danaTersedia', 'infaq', 'title']));
     }
 }

@@ -20,7 +20,7 @@
     <!--Metric Card-->
     <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mx-2 my-0 ">
     
-      <h1 class="mb-5 font-semibold text-xl">Datar Pinjaman</h1>
+      <h1 class="mb-5 font-semibold text-xl">Kategori: {{$item->id_siswa != NULL ? 'Hutang' : 'Pengeluran Kelas'}}</h1>
       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">tanggal : </label>
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{$item->tanggal}}</p>
 
@@ -41,9 +41,11 @@
 
       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">keluar : </label>
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Rp.{{$item->uang}}</p>
-    
-      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">nominal : </label>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Rp.{{$item->uang_kembali}}</p>
+    @if ($item->id_siswa != NULL)
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">nominal : </label>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Rp.{{$item->uang_kembali}}</p>
+    @endif
+     
 
     </div>
    

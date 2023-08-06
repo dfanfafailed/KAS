@@ -16,12 +16,12 @@ class PengeluaranController extends Controller
         $siswa = User::all();
         $tanggal = Carbon::now()->format('Y-m-d');
         $pengeluaran = DB::table('pengeluaran')
-        ->leftJoin('pembayaran', 'pengeluaran.id', '=', 'pembayaran.id_pengeluaran')
-        ->leftJoin('users', 'pembayaran.id_siswa', '=', 'users.id')
-        ->select('pengeluaran.*', 'pembayaran.uang_kembali', 'users.name')
-        ->get();
-       
-        return view('pengeluaran.index', compact('pengeluaran','tanggal','siswa'));
+            ->leftJoin('pembayaran', 'pengeluaran.id', '=', 'pembayaran.id_pengeluaran')
+            ->leftJoin('users', 'pembayaran.id_siswa', '=', 'users.id')
+            ->select('pengeluaran.*', 'pembayaran.uang_kembali', 'users.name')
+            ->get();
+        $title = 'Pengeluaran';
+        return view('pengeluaran.index', compact('pengeluaran', 'tanggal', 'siswa', 'title'));
     }
 
     public function add()
