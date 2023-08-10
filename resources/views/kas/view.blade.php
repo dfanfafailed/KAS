@@ -99,38 +99,6 @@
         </form>
           @endforeach
       </tbody>
-      {{-- @push('scripts')
-          <script>
-      
-          function read(id){
-            $id = id;
-            $.get("{{route('kas.view',1)}}",function(data,status){
-              $('tbody').html(data);
-            });
-          }
-         
-          function show(id){
-
-            $.ajaxSetup({
-              headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              }
-            });
-
-            $id = id;
-             $('#kas_masuk'+$id).on('keyup',function(){
-              var kas = $(this).val();
-              $.ajax({
-                type: "post",
-                url: "{{url('kas')}}/" +id,
-                data: {'kas_masuk':kas},
-                success:function(data){
-                  read(1)
-                }
-              });
-            });
-        
-          }
-          </script>
-      @endpush --}}
+  </table>
+</div>
 @endsection

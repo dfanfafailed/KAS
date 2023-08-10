@@ -18,7 +18,7 @@
       <div class="bg-slate-900 shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 flex flex-col">
         <div class="mb-4">
           <label class="block text-grey-darker text-sm font-bold text-white mb-2" for="id">
-            Username
+            Id
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="id" type="text" placeholder="Id" name="id">
         </div>
@@ -38,18 +38,4 @@
   </div>
 </div>  
 
-
-  {{-- <h1 class="">Form Login</h1>
-  <form action="/login" method="POST">
-    @csrf
-    <label for="id-user">
-      <p>id</p>
-      <input type="text" name="id" id="id-user">
-    </label>
-    <label for="password">
-      <p>password</p>
-      <input type="password" name="password" id="password">
-    </label>
-    <button type="submit">login</button>
-  </form> --}}
 @endsection

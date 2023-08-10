@@ -20,6 +20,6 @@ class EnsureHasRole
         if (in_array($request->user()->keanggotaan, $role)) {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/dashboard');
     }
 }

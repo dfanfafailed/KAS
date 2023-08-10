@@ -36,45 +36,31 @@ class KasController extends Controller
 
     public function create(Request $request)
     {
-
-        if ($request->id_kategori != 1) {
-            Kas::create([
-                'id_kategori' => $request->id_kategori,
-                'tanggal' => $request->tanggal,
-                'bulan' => $request->bulan,
-                'uang' => 0
-            ]);
+       
+       
+        $kas = Kas::create([
+            'id_kategori' => $request->id_kategori,
+            'tanggal' => $request->tanggal,
+            'bulan' => $request->bulan,
+            'uang' => $request->uang
+        ]);
+       if($kas){
             $nis = User::get('id');
-            $idKas = Kas::get('id')->last();
-
+            $kas->get('id')->last();
+           
             foreach ($nis as $item) {
                 Dana::create([
-                    'id_kas' => $idKas->id,
+                    'id_kas' => $kas->id,
                     'id_siswa' => $item->id,
                     'dana_masuk' => 0,
                     'status' => 0,
                 ]);
             }
-        }
-
-        $request->validate([
-            'uang' => 'integer|min_digits:3'
-        ]);
-
-        Kas::create($request->except('_token'));
-        $nis = User::get('id');
-        $idKas = Kas::get('id')->last();
-
-        foreach ($nis as $item) {
-            Dana::create([
-                'id_kas' => $idKas->id,
-                'id_siswa' => $item->id,
-                'dana_masuk' => 0,
-                'status' => 0,
-            ]);
-        }
-
+       }
         return redirect('/kas');
+    
+
+       
     }
 
     public function update(Request $request)
@@ -101,6 +87,7 @@ class KasController extends Controller
             ->where('id_kas', $request->id)
             ->select('users.name', 'dana.*', 'kas.uang', 'kas.id_kategori')
             ->get();
+        
         $title = $this->title;
         return view('kas.view', compact('dana', 'kas', 'title'));
     }

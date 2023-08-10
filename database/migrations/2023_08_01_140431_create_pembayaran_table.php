@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pengeluaran');
             $table->unsignedBigInteger('id_siswa');
             $table->date('tanggal');
-            $table->integer('uang');
+            $table->integer('uang_kembali');
             $table->timestamps();
 
             $table->foreign('id_pengeluaran')->references('id')->on('pengeluaran');

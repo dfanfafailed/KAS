@@ -40,20 +40,29 @@
                   <input type="password" name="password" id="password"class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
                   <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Passsword</label>
               </div>
+              <div class="relative z-0 w-full mb-6 group ">
+                <select name="keanggotaan" id="keanggotaan" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                  <label for="keanggotaan" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                  <option class="peer-focus:font-medium absolute text-sm text-gray-500 ">Peran</option>
+                  <option class="peer-focus:font-medium absolute text-sm text-gray-500" value="1">siswa</option>
+                  <option class="peer-focus:font-medium absolute text-sm text-gray-500" value="2">Bendahara</option>
+                  </label>
+                </select>
+              </div>
             </div>
             
             </div>
             <!-- Modal footer -->
             <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="defaultModal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Simpan</button>
+                <button onclick="save()" data-modal-hide="defaultModal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Simpan</button>
             </div>
+          </form> 
         </div>
     </div>
 </div>
 
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-3 my-5">
-    <a href="/user/add">+siswa</a>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -95,6 +104,14 @@
         </tbody>
     </table>
   </div>
+
+
+  <script type="text/javascript">
+    const submit = document.querySelector(".submit");
+    function save(){
+      alert('Data berhasil di tambah')
+    }
+  </script>
 
 
   @endsection

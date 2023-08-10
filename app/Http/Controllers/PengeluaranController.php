@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Dana;
+use App\Models\User;
 use App\Models\Pembayaran;
 use App\Models\Pengeluaran;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -34,6 +35,12 @@ class PengeluaranController extends Controller
 
     public function store(Request $request)
     {
+        $dana = Dana::sum('dana_masuk') - Pengeluaran::sum('uang');
+        if ($request->uang > $dana) {
+          
+            return redirect('/pengeluaran')->with('failed', 'fail');
+        }
+
         $pengeluaran = Pengeluaran::create($request->except('_token'));
         if ($pengeluaran->id_siswa != NULL) {
             Pembayaran::create([

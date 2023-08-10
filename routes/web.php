@@ -21,11 +21,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware(['auth', 'has.role:1,2'])->group(function () {
-//     Route::get('/', function () {
-//         return view('content.dashboard');
-//     });
-// });
+Route::middleware(['auth', 'has.role:1,2'])->group(function () {
+    Route::get('/dashboard', [UserController::class, 'viewKas']);
+    Route::get('/dashboard/siswa/kas/{id}', [UserController::class, 'detailKas'])->name('detail.kas');
+});
 
 
 

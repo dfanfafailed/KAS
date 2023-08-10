@@ -31,7 +31,8 @@ class DanaController extends Controller
 
         $danaMasuk = Dana::sum('dana_masuk');
         $danaKeluar = Pengeluaran::sum('uang') - Pembayaran::sum('uang_kembali');
-        $this->danaTersedia = $dana - $danaKeluar;
+        $danaDigunakan = Pengeluaran::sum('uang');
+        $this->danaTersedia = $dana - $danaDigunakan;
         $this->danaTersedia += $bayar;
         $danaTersedia = $this->danaTersedia;
 
@@ -40,10 +41,11 @@ class DanaController extends Controller
 
     public function edit(int $id)
     {
+        $title = 'Pembayaran';
         $tanggal = Carbon::now()->format('Y-m-d');
         $pengeluaran = Pengeluaran::find($id);
         $nama = $pengeluaran->user->name;
-        return view('dana.update', compact(['nama', 'tanggal', 'pengeluaran']));
+        return view('dana.update', compact(['nama', 'tanggal', 'pengeluaran','title']));
     }
 
     public function update(Request $request)
