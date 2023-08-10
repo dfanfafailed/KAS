@@ -10,7 +10,8 @@ class AuthController extends Controller
 
     public function index()
     {
-        return view('auth.index');
+        $title = 'Login';
+        return view('auth.index', compact('title'));
     }
 
     public function login(Request $request)
