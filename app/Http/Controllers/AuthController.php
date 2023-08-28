@@ -26,13 +26,17 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('home');
+            // return redirect()->route('home');
+            return response()->json(['message' => 'Login berhasil', 'success' => true]);
         }
 
+        // Jika login gagal
+
         // return redirect()->intended('login');
-        return back()->withErrors([
-            'id' => 'Maaf, Password salah',
-        ]);
+        // return back()->withErrors([
+        //     'id' => 'Maaf, Password salah',
+        // ]);
+        return response()->json(['message' => 'Periksa kembali password Anda.', 'success' => false], 401);
     }
 
     public function logout(Request $request)
