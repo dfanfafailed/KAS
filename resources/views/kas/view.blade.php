@@ -93,7 +93,13 @@
               
 
               <td class="px-2 py-4 text-right">
-                  <button type="submit" id="btn1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                {{-- @if ($item->dana_masuk == $kas->uang)
+                    selesai
+                @else
+                    
+                @endif --}}
+                <button type="submit" id="btn1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+
               </td>
           </tr>
         </form>

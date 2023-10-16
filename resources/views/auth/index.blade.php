@@ -1,8 +1,27 @@
 @extends('layouts.link')
 @section('script')
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
+<div class="login">
   
+  <h2>Login</h2>
+
+  <form class="login-form" action="/login" method="POST" id="login-form">
+    @csrf
+    <div class="textbox">
+      <input type="text" placeholder="Masukan Nis" name="id" id="id"/>
+      <span class="material-symbols-outlined"> account_circle </span>
+    </div>
+    <div class="textbox">
+      <input type="password" placeholder="Masukan Password" id="password" name="password"/>
+      <span class="material-symbols-outlined"> lock </span>
+    </div>
+    <button type="submit">LOGIN</button>
+  </form>
+</div>
+
       
-<div class="container mx-auto px-6">
+{{-- <div class="container mx-auto px-6">
   <div class="mt-32 max-w-xl mx-auto h-90 rounded-xl shadow-xl">
 
       <form action="/login" method="POST" id="login-form">
@@ -31,7 +50,7 @@
       <div id="alert"></div>
 
   </div>
-</div>  
+</div>   --}}
 
 <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
